@@ -17,7 +17,8 @@ public class Application {
                 Link link = new Link();
                 URL url = new URL(link.getLink(nameScan.nextLine()));
                 System.out.println(link.getRating(url));
-                System.out.println("More info: " + link.theLink);
+                System.out.println("More Info: " + link.mainLink);
+                System.out.println("Send a Review: " + link.sendReviewLink);
                 Thread.sleep(1000);
                 System.out.print("\nWould you like to search for another professor (y/n)? ");
                 String string = new Scanner(System.in).nextLine().toLowerCase(Locale.ROOT);

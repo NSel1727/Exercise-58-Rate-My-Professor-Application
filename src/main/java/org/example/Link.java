@@ -12,14 +12,17 @@ import java.net.URLConnection;
 import java.util.Scanner;
 
 public class Link {
-    String theLink;
+    String mainLink;
+    String sendReviewLink;
 
     public String getLink(String profName){
         try {
             Document doc = Jsoup.connect("https://www.google.com.au/search?q=UCFratemyprofessor " + profName).get();
             Elements links = doc.getElementsByClass("g");
             Element firstLink = links.first();
-            theLink = firstLink.getElementsByTag("a").first().attr("href");
+            mainLink = firstLink.getElementsByTag("a").first().attr("href");
+            int index = mainLink.indexOf("S");
+            sendReviewLink = mainLink.substring(0, index) + "AddRating" + mainLink.substring(index + 11);
             return firstLink.getElementsByTag("a").first().attr("href");
         }catch(java.io.IOException ex){
             System.out.println("\nAn error has occurred. Make sure you type an accurate professor name.\n");
